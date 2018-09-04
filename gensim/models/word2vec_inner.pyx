@@ -575,7 +575,8 @@ def train_batch_sg(model, sentences, alpha, _work, compute_loss):
             idx_start = sentence_idx[sent_idx]
             idx_end = sentence_idx[sent_idx + 1]
             for i in range(idx_start, idx_end):
-                j = i - window + reduced_windows[i]
+                # j = i - window + reduced_windows[i]
+                j = i
                 if j < idx_start:
                     j = idx_start
                 k = i + window + 1 - reduced_windows[i]
@@ -709,7 +710,8 @@ def train_batch_cbow(model, sentences, alpha, _work, _neu1, compute_loss):
             idx_start = sentence_idx[sent_idx]
             idx_end = sentence_idx[sent_idx + 1]
             for i in range(idx_start, idx_end):
-                j = i - window + reduced_windows[i]
+                # j = i - window + reduced_windows[i]
+                j = i
                 if j < idx_start:
                     j = idx_start
                 k = i + window + 1 - reduced_windows[i]
@@ -792,7 +794,8 @@ def score_sentence_sg(model, sentence, _work):
         for i in range(sentence_len):
             if codelens[i] == 0:
                 continue
-            j = i - window
+            # j = i - window
+            j = i
             if j < 0:
                 j = 0
             k = i + window + 1
@@ -897,7 +900,8 @@ def score_sentence_cbow(model, sentence, _work, _neu1):
         for i in range(sentence_len):
             if codelens[i] == 0:
                 continue
-            j = i - window
+            # j = i - window
+            j = i
             if j < 0:
                 j = 0
             k = i + window + 1
